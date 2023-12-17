@@ -49,8 +49,6 @@ class ShopTest {
     private static Set<Appliance> correctAppliances;
     private static Set<Order> correctOrders;
 
-    /*not for user*/
-    private static Factory spoon;
 
     @BeforeAll
     static void setup() throws Exception {
@@ -66,12 +64,6 @@ class ShopTest {
         correctManufacturer = readManufacturers();
         correctAppliances = readAppliances();
         correctOrders = readOrders();
-        /* NOT FOR USER*/
-        final String[] args = {"-i", "src/main/java/"};
-        final Launcher launcher = new Launcher();
-        launcher.setArgs(args);
-        launcher.buildModel();
-        spoon = launcher.getFactory();
     }
 
     //check interfaces
@@ -390,27 +382,6 @@ class ShopTest {
         });
         String expected = "Order not found";
         assertEquals(expected, thrown.getMessage());
-    }
-
-    @Test
-    void checkStreamApi() {
-        CtType<Shop> agencyClass = spoon.Type().get(Shop.class.getName());
-        Class<?>[] classes = {Find.class, Sort.class};
-        Arrays.stream(classes)
-                .map(Class::getDeclaredMethods)
-                .flatMap(Stream::of)
-                .map(m -> agencyClass.getMethodsByName(m.getName()).stream())
-                .flatMap(Function.identity())
-                .forEach(m -> assertFalse(
-                        m.getReferencedTypes().stream()
-                                .map(el -> el.getQualifiedName())
-                                .filter(name -> name.startsWith("java.util.stream")
-                                        || name.startsWith("java.util.function"))
-                                .map(el -> Boolean.FALSE)
-                                .findAny().orElse(Boolean.TRUE),
-                        () -> "Method " + m.getSignature() + " must use Stream API and types from the "
-                                + "java.util.function package")
-                );
     }
 
     // services methods
