@@ -13,7 +13,7 @@ public interface Find {
 
     List<Order> findOrderByEmployee(Employee employee);
 
-    Order findCheaperOrder();
+    Order findCheapestOrder();
 
-    Order findExpensiveOrder();
+    Order findMostExpensiveOrder();
 }

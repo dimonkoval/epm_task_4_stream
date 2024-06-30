@@ -11,8 +11,8 @@ addManufacturer,void
 findManufacturerById,com.epam.rd.autocode.assessment.appliances.model.Manufacturer
 findManufacturerByName,com.epam.rd.autocode.assessment.appliances.model.Manufacturer
 findOrderByEmployee,java.util.List
-findCheaperOrder,com.epam.rd.autocode.assessment.appliances.model.Order
-findExpensiveOrder,com.epam.rd.autocode.assessment.appliances.model.Order
+findCheapestOrder,com.epam.rd.autocode.assessment.appliances.model.Order
+findMostExpensiveOrder,com.epam.rd.autocode.assessment.appliances.model.Order
 sortManufacturersByName,java.util.List
 sortOrderByClientId,java.util.List
 sortAppliancesByCategory,java.util.List
