@@ -1,4 +1,4 @@
-# Appliances shop. Collections
+# Appliances shop. Stream API
 
 The purpose of this exercise is to check your knowledge of the Java Stream API and your ability to use it on practical tasks. 
 
@@ -70,10 +70,10 @@ Returns a list of orders by employee. The orders can contain the orders when emp
   The methods may be using in other methods
 
 ### Details
-
+* Each method `Find`, `Sort` should by implemented with the help of Stream API.
 * Domain model classes must have the following:
-     * A default constructor
-     * A constructor that takes values to initialize all fields as parameters
+    * A default constructor
+    * A constructor that takes values to initialize all fields as parameters
     * Getters and setters for all fields
     * The `equals()`, `hashCode()`, and `toString()` methods 
 
