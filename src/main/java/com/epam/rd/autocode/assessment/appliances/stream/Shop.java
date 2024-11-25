@@ -104,7 +104,7 @@ public class Shop implements Add, Find, Sort {
     public List<Manufacturer> sortManufacturersByName() {
         return manufacturers.stream()
                 .sorted(Comparator.comparing(Manufacturer::getName, Comparator.nullsLast(Comparator.naturalOrder())))
-                .collect(Collectors.toList());
+                .collect(Collectors.toCollection(LinkedList::new));
     }
 
     @Override
@@ -113,20 +113,20 @@ public class Shop implements Add, Find, Sort {
                 .sorted(Comparator.comparing(
                         order -> order.getClient() != null ? order.getClient().getId() : Long.MAX_VALUE
                 ))
-                .collect(Collectors.toList());
+                .collect(Collectors.toCollection(LinkedList::new));
     }
 
     @Override
     public List<Appliance> sortAppliancesByCategory() {
         return appliances.stream()
                 .sorted(Comparator.comparing(Appliance::getCategory))
-                .collect(Collectors.toList());
+                .collect(Collectors.toCollection(LinkedList::new));
     }
 
     @Override
     public List<Order> sortOrderByAmount() {
         return orders.stream()
                 .sorted(Comparator.comparing(Order::getAmount))
-                .collect(Collectors.toList());
+                .collect(Collectors.toCollection(LinkedList::new));
     }
 }
