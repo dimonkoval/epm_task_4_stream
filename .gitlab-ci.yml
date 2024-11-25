@@ -1,0 +1,23 @@
+stages:
+  - build
+  - test
+
+# Етап зборки
+build:
+  stage: build
+  script:
+    - echo "Running Maven build"
+    - mvn clean install
+  artifacts:
+    paths:
+      - target/*.jar # Збереження JAR-файлів після збірки
+
+# Етап тестування
+test:
+  stage: test
+  script:
+    - echo "Running Maven tests"
+    - mvn test
+  artifacts:
+    reports:
+      junit: target/surefire-reports/*.xml # Звіт у форматі JUnit
